@@ -2,6 +2,7 @@
 
 
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Scene from './components/Scene';
 import CustomNavbar from './components/CustomNavbar';
 import HeroSection from './components/HeroSection';
@@ -14,15 +15,30 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'contacto' | 'nosotros' | 'servicios'>('home');
 
   if (currentPage === 'contacto') {
-    return <ContactPageNew onNavigate={setCurrentPage} />;
+    return (
+      <>
+        <ContactPageNew onNavigate={setCurrentPage} />
+        <Analytics />
+      </>
+    );
   }
 
   if (currentPage === 'nosotros') {
-    return <NosotrosPage onNavigate={setCurrentPage} />;
+    return (
+      <>
+        <NosotrosPage onNavigate={setCurrentPage} />
+        <Analytics />
+      </>
+    );
   }
 
   if (currentPage === 'servicios') {
-    return <ServicesPageNew onNavigate={setCurrentPage} />;
+    return (
+      <>
+        <ServicesPageNew onNavigate={setCurrentPage} />
+        <Analytics />
+      </>
+    );
   }
 
   return (
@@ -43,6 +59,9 @@ const App: React.FC = () => {
         {/* Footer */}
         <Footer />
       </div>
+
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 };
