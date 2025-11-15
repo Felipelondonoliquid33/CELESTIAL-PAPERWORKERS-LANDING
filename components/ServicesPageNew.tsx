@@ -22,7 +22,7 @@ const ServicesPageNew: React.FC<ServicesPageNewProps> = ({ onNavigate }) => {
         <CustomNavbar onNavigate={onNavigate} />
         
         {/* Services Content */}
-        <div className="relative min-h-screen pt-44 px-6 pb-20">
+        <div className="relative min-h-screen pt-20 sm:pt-32 md:pt-44 px-4 sm:px-6 pb-12 sm:pb-20">
           <ServicesPage />
         </div>
         

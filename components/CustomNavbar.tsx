@@ -14,6 +14,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
   const logoRef = useRef<HTMLHeadingElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     // Initial animation for navbar
@@ -133,12 +134,19 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
     ));
   };
 
+  const handleMobileLinkClick = (page: 'servicios' | 'nosotros' | 'contacto') => {
+    if (onNavigate) {
+      onNavigate(page);
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 ${className}`}>
-      <div className="mx-auto px-6 py-4">
+      <div className="mx-auto px-3 sm:px-6 py-2 sm:py-4">
         <div 
           ref={navRef}
-          className="flex items-center justify-between px-8 py-4 rounded-full"
+          className="flex items-center justify-between px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full"
           style={{
             background: 'rgba(255, 255, 255, 0.1)',
             backdropFilter: 'blur(20px)',
@@ -150,7 +158,10 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
           {/* Logo/Brand with Gradient */}
           <div 
             className="flex items-center cursor-pointer relative z-10"
-            onClick={() => onNavigate && onNavigate('home')}
+            onClick={() => {
+              onNavigate && onNavigate('home');
+              setIsMobileMenuOpen(false);
+            }}
             onMouseEnter={() => handleLogoHover(true)}
             onMouseLeave={() => handleLogoHover(false)}
             style={{
@@ -160,20 +171,21 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
           >
             <h1 
               ref={logoRef}
-              className="font-bold text-lg leading-tight text-[#003366]"
+              className="font-bold text-xs sm:text-sm md:text-lg leading-tight text-[#003366]"
               style={{
                 filter: 'none',
                 WebkitFilter: 'none',
                 textShadow: 'none',
               }}
             >
-              <div>{splitText('Celestial')}</div>
-              <div>{splitText('Paperworkers')}</div>
+              <div className="hidden sm:block">{splitText('Celestial')}</div>
+              <div className="hidden sm:block">{splitText('Paperworkers')}</div>
+              <div className="sm:hidden">{splitText('CP')}</div>
             </h1>
           </div>
 
-          {/* Navigation Links */}
-          <div ref={linksRef} className="flex items-center gap-12">
+          {/* Desktop Navigation Links */}
+          <div ref={linksRef} className="hidden md:flex items-center gap-8 lg:gap-12">
             <a 
               href="#servicios" 
               onClick={(e) => {
@@ -190,7 +202,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
                 handleLinkHover(e, false);
                 setHoveredLink(null);
               }}
-              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer"
+              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer text-sm lg:text-base"
               style={{
                 textShadow: hoveredLink === 'servicios' ? '0 0 10px rgba(79, 151, 163, 0.5)' : 'none',
                 filter: 'none',
@@ -221,7 +233,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
                 handleLinkHover(e, false);
                 setHoveredLink(null);
               }}
-              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer"
+              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer text-sm lg:text-base"
               style={{
                 textShadow: hoveredLink === 'nosotros' ? '0 0 10px rgba(79, 151, 163, 0.5)' : 'none',
                 filter: 'none',
@@ -252,7 +264,7 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
                 handleLinkHover(e, false);
                 setHoveredLink(null);
               }}
-              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer"
+              className="text-[#003366] font-semibold relative transition-all duration-300 cursor-pointer text-sm lg:text-base"
               style={{
                 textShadow: hoveredLink === 'contacto' ? '0 0 10px rgba(79, 151, 163, 0.5)' : 'none',
                 filter: 'none',
@@ -267,6 +279,58 @@ const CustomNavbar: React.FC<CustomNavbarProps> = ({ className = '', onNavigate 
                 }}
               />
             </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2 relative z-20"
+            aria-label="Toggle menu"
+          >
+            <span 
+              className={`block w-6 h-0.5 bg-[#003366] transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+            />
+            <span 
+              className={`block w-6 h-0.5 bg-[#003366] transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+            />
+            <span 
+              className={`block w-6 h-0.5 bg-[#003366] transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+            />
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div 
+          className={`md:hidden absolute top-full left-0 right-0 mx-3 mt-2 rounded-2xl overflow-hidden transition-all duration-300 ${
+            isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+          }`}
+          style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+          }}
+        >
+          <div className="flex flex-col py-4">
+            <button
+              onClick={() => handleMobileLinkClick('servicios')}
+              className="px-6 py-3 text-[#003366] font-semibold text-left hover:bg-[#4F97A3]/10 transition-colors"
+            >
+              Servicios
+            </button>
+            <button
+              onClick={() => handleMobileLinkClick('nosotros')}
+              className="px-6 py-3 text-[#003366] font-semibold text-left hover:bg-[#4F97A3]/10 transition-colors"
+            >
+              Nosotros
+            </button>
+            <button
+              onClick={() => handleMobileLinkClick('contacto')}
+              className="px-6 py-3 text-[#003366] font-semibold text-left hover:bg-[#4F97A3]/10 transition-colors"
+            >
+              Contacto
+            </button>
           </div>
         </div>
       </div>

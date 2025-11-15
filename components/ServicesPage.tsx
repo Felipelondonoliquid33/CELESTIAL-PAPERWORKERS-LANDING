@@ -56,12 +56,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, text, color, ind
   return (
     <CardContainer containerClassName="py-0 h-full">
       <CardBody
-        className={`relative group/card bg-gradient-to-br from-[#dde3eb]/70 to-[#dde3eb]/50 backdrop-blur-xl p-8 ${shapeClass} border-2 flex flex-col items-center text-center h-full w-full transition-all duration-300 hover:shadow-xl hover:shadow-[--card-color]/40`}
+        className={`relative group/card bg-gradient-to-br from-[#dde3eb]/70 to-[#dde3eb]/50 backdrop-blur-xl p-4 sm:p-6 md:p-8 ${shapeClass} border-2 flex flex-col items-center text-center h-full w-full transition-all duration-300 hover:shadow-xl hover:shadow-[--card-color]/40`}
         style={{ borderColor: color, '--card-color': color } as React.CSSProperties}
       >
         <CardItem
           translateZ="100"
-          className="w-20 h-20 mb-6"
+          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-3 sm:mb-4 md:mb-6"
           style={{ color: color, filter: `drop-shadow(0 6px 8px ${color}80)` }}
         >
           {IconComponent && <IconComponent />}
@@ -69,14 +69,14 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, text, color, ind
         <CardItem
           as="h3"
           translateZ="80"
-          className="text-2xl font-bold text-[#003366] mb-4"
+          className="text-lg sm:text-xl md:text-2xl font-bold text-[#003366] mb-2 sm:mb-3 md:mb-4"
         >
           {title}
         </CardItem>
         <CardItem
           as="p"
           translateZ="60"
-          className="text-[#003366] leading-relaxed text-base"
+          className="text-[#003366] leading-relaxed text-sm sm:text-base"
         >
           {text}
         </CardItem>
@@ -88,19 +88,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, text, color, ind
 
 const ServicesPage: React.FC = () => {
   return (
-    <div className="container mx-auto">
-      <div className="text-center mb-16">
-        <h1 className="text-6xl md:text-7xl font-black leading-tight text-[#003366]">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="text-center mb-8 sm:mb-12 md:mb-16">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight text-[#003366] px-2">
           Nuestros Servicios<br/>
           <ContainerTextFlip
             words={["Celestiales", "Administrativos", "Terrenales"]}
           />
         </h1>
-        <p className="mt-4 text-xl text-[#212842] max-w-3xl mx-auto">
+        <p className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-[#212842] max-w-3xl mx-auto px-2">
           Estamos aquí para despejar las nubes de la burocracia, ofreciéndole tranquilidad en cada paso del camino.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {servicesData.map((service, index) => (
           <div
             key={service.title}

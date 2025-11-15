@@ -114,13 +114,13 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <div ref={heroRef} className="relative min-h-screen pt-44 px-6 pb-20">
+    <div ref={heroRef} className="relative min-h-screen pt-20 sm:pt-32 md:pt-44 px-4 sm:px-6 pb-12 sm:pb-20">
       <div className="max-w-[1400px] mx-auto">
         {/* Main Title - Left Side, Large */}
-        <div className="mb-20">
+        <div className="mb-8 sm:mb-12 md:mb-20">
           <h1 
             ref={titleRef}
-            className="text-[80px] md:text-[100px] lg:text-[120px] font-black leading-none max-w-[600px]"
+            className="text-[40px] sm:text-[55px] md:text-[80px] lg:text-[100px] xl:text-[120px] font-black leading-none max-w-full sm:max-w-[600px]"
             style={{
               color: '#1e3a5f',
               textShadow: '0 4px 20px rgba(30, 58, 95, 0.2)'
@@ -141,15 +141,14 @@ const HeroSection: React.FC = () => {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-20 lg:gap-32 items-start">
           {/* Left Column - Content */}
-          <div className="space-y-8"
->
+          <div className="space-y-4 sm:space-y-6 md:space-y-8">
 
             {/* Subtitle */}
             <h2 
               ref={subtitleRef}
-              className="text-2xl md:text-3xl font-bold"
+              className="text-xl sm:text-2xl md:text-3xl font-bold"
               style={{ color: '#1e3a5f' }}
             >
               Aparecemos cuando la burocracia se vuelve más compleja
@@ -158,7 +157,7 @@ const HeroSection: React.FC = () => {
             {/* Description */}
             <p 
               ref={descriptionRef}
-              className="text-base md:text-lg max-w-md"
+              className="text-sm sm:text-base md:text-lg max-w-full sm:max-w-md"
               style={{ color: '#434F85' }}
             >
               Nuestro equipo le ayudará a gestionar tareas administrativas y papeleos incómodos, en un momento donde usted solo tiene que sanar.
@@ -169,7 +168,7 @@ const HeroSection: React.FC = () => {
               ref={buttonRef}
               onMouseEnter={() => handleButtonHover(true)}
               onMouseLeave={() => handleButtonHover(false)}
-              className="px-8 py-4 rounded-full font-bold text-white text-lg transition-all duration-300"
+              className="px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-white text-base sm:text-lg transition-all duration-300 w-full sm:w-auto"
               style={{
                 background: 'linear-gradient(135deg, #4F97A3 0%, #87CEBB 100%)',
                 boxShadow: '0 4px 15px rgba(79, 147, 163, 0.3)'
@@ -180,10 +179,10 @@ const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column - Step Cards */}
-          <div ref={cardsRef} className="space-y-8">
+          <div ref={cardsRef} className="space-y-4 sm:space-y-6 md:space-y-8">
             {/* Card 1 */}
             <div 
-              className="step-card relative p-8 rounded-3xl transform transition-all duration-300"
+              className="step-card relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transform transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, rgba(224, 229, 236, 0.9) 0%, rgba(188, 198, 204, 0.9) 100%)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
@@ -194,24 +193,24 @@ const HeroSection: React.FC = () => {
               onMouseLeave={(e) => handleCardHover(e, false)}
             >
               <div 
-                className="absolute -right-6 -top-12 text-[100px] font-black opacity-60"
+                className="absolute -right-2 sm:-right-4 md:-right-6 -top-6 sm:-top-8 md:-top-12 text-[60px] sm:text-[80px] md:text-[100px] font-black opacity-60"
                 style={{ 
                   color: '#4F97A3',
-                  WebkitTextStroke: '3px #003366',
+                  WebkitTextStroke: '2px #003366',
                   textShadow: '0 4px 8px rgba(0, 51, 102, 0.3)'
                 }}
               >
                 1
               </div>
-              <div className="relative z-10">
+              <div className="relative z-10 pr-8 sm:pr-12">
                 <h3 
-                  className="text-xl md:text-2xl font-bold mb-3"
+                  className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3"
                   style={{ color: '#1e3a5f' }}
                 >
                   Nos cuentas qué necesitas.
                 </h3>
                 <p 
-                  className="text-base"
+                  className="text-sm sm:text-base"
                   style={{ color: '#434F85' }}
                 >
                   Un mensaje, una llamada o una señal celestial: entendemos tu situación y los trámites pendientes.
@@ -221,7 +220,7 @@ const HeroSection: React.FC = () => {
 
             {/* Card 2 */}
             <div 
-              className="step-card relative p-8 rounded-3xl transform transition-all duration-300"
+              className="step-card relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transform transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, rgba(224, 229, 236, 0.9) 0%, rgba(188, 198, 204, 0.9) 100%)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
@@ -232,24 +231,24 @@ const HeroSection: React.FC = () => {
               onMouseLeave={(e) => handleCardHover(e, false)}
             >
               <div 
-                className="absolute -right-6 -top-12 text-[100px] font-black opacity-60"
+                className="absolute -right-2 sm:-right-4 md:-right-6 -top-6 sm:-top-8 md:-top-12 text-[60px] sm:text-[80px] md:text-[100px] font-black opacity-60"
                 style={{ 
                   color: '#4F97A3',
-                  WebkitTextStroke: '3px #003366',
+                  WebkitTextStroke: '2px #003366',
                   textShadow: '0 4px 8px rgba(0, 51, 102, 0.3)'
                 }}
               >
                 2
               </div>
-              <div className="relative z-10">
+              <div className="relative z-10 pr-8 sm:pr-12">
                 <h3 
-                  className="text-xl md:text-2xl font-bold mb-3"
+                  className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3"
                   style={{ color: '#1e3a5f' }}
                 >
                   Nosotros nos encargamos del papeleo.
                 </h3>
                 <p 
-                  className="text-base"
+                  className="text-sm sm:text-base"
                   style={{ color: '#434F85' }}
                 >
                   Coordinamos documentos, bancos y registros, mientras tú te enfocas en sanar.
@@ -259,7 +258,7 @@ const HeroSection: React.FC = () => {
 
             {/* Card 3 */}
             <div 
-              className="step-card relative p-8 rounded-3xl transform transition-all duration-300"
+              className="step-card relative p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl transform transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, rgba(224, 229, 236, 0.9) 0%, rgba(188, 198, 204, 0.9) 100%)',
                 boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
@@ -270,24 +269,24 @@ const HeroSection: React.FC = () => {
               onMouseLeave={(e) => handleCardHover(e, false)}
             >
               <div 
-                className="absolute -right-6 -top-12 text-[100px] font-black opacity-60"
+                className="absolute -right-2 sm:-right-4 md:-right-6 -top-6 sm:-top-8 md:-top-12 text-[60px] sm:text-[80px] md:text-[100px] font-black opacity-60"
                 style={{ 
                   color: '#4F97A3',
-                  WebkitTextStroke: '3px #003366',
+                  WebkitTextStroke: '2px #003366',
                   textShadow: '0 4px 8px rgba(0, 51, 102, 0.3)'
                 }}
               >
                 3
               </div>
-              <div className="relative z-10">
+              <div className="relative z-10 pr-8 sm:pr-12">
                 <h3 
-                  className="text-xl md:text-2xl font-bold mb-3"
+                  className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3"
                   style={{ color: '#1e3a5f' }}
                 >
                   Recibes todo resuelto.
                 </h3>
                 <p 
-                  className="text-base"
+                  className="text-sm sm:text-base"
                   style={{ color: '#434F85' }}
                 >
                   Te entregamos un resumen claro y todos los documentos en orden, cerrando el ciclo para que puedas avanzar con tranquilidad.

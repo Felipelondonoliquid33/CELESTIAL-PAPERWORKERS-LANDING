@@ -22,7 +22,7 @@ const ContactPageNew: React.FC<ContactPageNewProps> = ({ onNavigate }) => {
         <CustomNavbar onNavigate={onNavigate} />
         
         {/* Contact Content */}
-        <div className="relative min-h-screen pt-44 px-6 pb-20">
+        <div className="relative min-h-screen pt-20 sm:pt-32 md:pt-44 px-4 sm:px-6 pb-12 sm:pb-20">
           <ContactPage />
         </div>
         
